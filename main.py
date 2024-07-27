@@ -18,7 +18,7 @@ def get_groq_completions(user_content):
         messages=[
             {
                 "role": "system",
-                "content": "You are a YouTube expert creator who likes to write engaging titles for a keyword. \nYou will provide 10 attention-grabbing YouTube titles on keywords specified by the user."
+                "content": user_content + "\nPor favor, responda em português do Brasil."
             },
             {
                 "role": "user",
