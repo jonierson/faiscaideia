@@ -91,15 +91,12 @@ def criar_prompt(dados_usuario):
 st.title("Tenha ideias incríveis de projetos com o Faísca, seu assistente virtual!")
 
 # Centralizando a imagem usando colunas
-col1, col2, col3 = st.columns(3)
+col1, col2 = st.columns(3)
 
 with col1:
     st.write("")
 
 with col2:
-    st.image("https://github.com/jonierson/faiscaideia/blob/main/faisca.png", use_column_width=True)
-
-with col3:
     st.write("")
 
 st.write("""
