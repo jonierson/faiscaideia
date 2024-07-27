@@ -97,7 +97,7 @@ with col1:
     st.write("")
 
 with col2:
-    st.image("C:/Users/IFmaker02/PycharmProjects/streamilt/faisca.png", use_column_width=True)
+    st.image("https://github.com/jonierson/faiscaideia/blob/main/faisca.png", use_column_width=True)
 
 with col3:
     st.write("")
