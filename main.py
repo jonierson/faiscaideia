@@ -162,7 +162,7 @@ tema_especifico = st.text_input("Informe o tema específico que você deseja exp
 
 motivacao = st.text_input("O que te motivou a escolher esse tema? (Ex.: 1. Sempre fui fascinado(a) por...; 2. Quero contribuir para encontrar soluções para...; 3. Sempre tive curiosidade sobre...)", key="motivacao")
 
-conhecimento_previo = st.radio("Qual seu conhecimento prévio sobre esse tema??", ["Nenhum", "Básico", "Intermediário", "Avançado"],
+conhecimento_previo = st.radio("Qual seu conhecimento prévio sobre esse tema?", ["Nenhum", "Básico", "Intermediário", "Avançado"],
                                key="conhecimento_previo")
 
 habilidades = st.text_area("Quais habilidades você tem que podem ajudar no desenvolvimento do projeto? (Ex.: 1. Sou muito bom em...; 2. Tenho facilidade em...; 3. Possuo conhecimento em...)",
