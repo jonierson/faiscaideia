@@ -61,7 +61,7 @@ def criar_prompt(dados_usuario):
     Para desenvolver esse projeto pretendo fazer uso das minhas habilidades de {habilidades} e dos seguintes recursos {recursos}. 
     Espero que ao final do projeto possa {impacto}. 
     Gostaria ainda de acrescentar que {informacao_adicional}. 
-    Poderia me ajudar a criar uma lista contendo 5 ideias de projetos de feira de ciência que se encaixem na metodologia escolhida? As sugestões devem conter um título, objetivo e materiais e devem ser organizadas da seguinte forma:\n
+    Poderia me ajudar a criar uma lista contendo 5 ideias de projetos de feira de ciência, utilizando a lingua portuguesa do Brasil, que se encaixem na metodologia escolhida? As sugestões devem conter um título, objetivo e materiais e devem ser organizadas da seguinte forma:\n
     1. Título:\n
     2. Objetivo:\n
     3. Materiais:\n
