@@ -1,8 +1,7 @@
 import os
 import streamlit as st
-from groq import Groq
 from dotenv import load_dotenv
-
+from groq import Groq
 
 # Carregar variáveis do arquivo .env
 load_dotenv()
@@ -49,7 +48,6 @@ def gerar_ideias(dados_usuario):
         st.error(f"Erro ao tentar gerar ideias: {e}")
         return None
 
-
 # Função para criar o prompt com base nos dados do usuário
 def criar_prompt(dados_usuario):
     metodologia = dados_usuario.get('metodologia')
@@ -86,18 +84,8 @@ def criar_prompt(dados_usuario):
         informacao_adicional=dados_usuario['informacao_adicional']
     )
 
-
 # Configuração da aplicação Streamlit
 st.title("Tenha ideias incríveis de projetos com o Faísca, seu assistente virtual!")
-
-# Centralizando a imagem usando colunas
-col1, col2 = st.columns(3)
-
-with col1:
-    st.write("")
-
-with col2:
-    st.write("")
 
 st.write("""
 Faísca é um chatbot de inteligência artificial feito sob medida para alunos da educação básica como você. Ele não é apenas um assistente; é uma fonte de inspiração que irá acender sua criatividade e ajudá-lo a gerar ideias para seus projetos.
@@ -148,54 +136,59 @@ elif area_conhecimento == "Engenharias":
 elif area_conhecimento == "Ciências Humanas":
     especialidade = st.selectbox("Dentro da área de conhecimento escolhido, qual especialidade te interessa mais:", [
         "", "Antropologia", "Arqueologia", "Ciência Política", "Educação", "Filosofia", "Geografia", "História",
-        "Psicologia", "Sociologia", "Teologia"])
+        "Psicologia", "Sociologia"])
 elif area_conhecimento == "Ciências Sociais Aplicadas":
     especialidade = st.selectbox("Dentro da área de conhecimento escolhido, qual especialidade te interessa mais:", [
-        "", "Administração", "Arquitetura e Urbanismo", "Ciências Contábeis", "Comunicação", "Direito", "Economia",
-        "Museologia", "Planejamento Urbano e Regional", "Serviço Social", "Turismo"])
+        "", "Administração", "Ciências Contábeis", "Comunicação", "Direito", "Economia", "Serviço Social"])
 elif area_conhecimento == "Lingüística, Letras e Artes":
     especialidade = st.selectbox("Dentro da área de conhecimento escolhido, qual especialidade te interessa mais:", [
-        "", "Artes", "Letras", "Lingüística", "Música"])
+        "", "Artes", "Lingüística", "Literatura", "Tradução"])
 
-tema_especifico = st.text_input("Informe o tema específico que você deseja explorar no seu projeto:",
+tema_especifico = st.text_input("Escreva um tema específico que você gostaria de explorar no seu projeto",
                                 key="tema_especifico")
 
-motivacao = st.text_input("O que te motivou a escolher esse tema? (Ex.: 1. Sempre fui fascinado(a) por...; 2. Quero contribuir para encontrar soluções para...; 3. Sempre tive curiosidade sobre...)", key="motivacao")
+motivacao = st.text_input("O que te motiva a escolher esse tema específico?",
+                          key="motivacao")
 
-conhecimento_previo = st.radio("Você já tem algum conhecimento prévio sobre esse tema?", ["Sim", "Não"],
-                               key="conhecimento_previo")
+conhecimento_previo = st.radio("Qual seu conhecimento prévio sobre esse tema?", [
+    "Nenhum", "Básico", "Intermediário", "Avançado"], key="conhecimento_previo")
 
-habilidades = st.text_area("Quais habilidades você tem que podem ajudar no desenvolvimento do projeto? (Ex.: 1. Sou muito bom em...; 2. Tenho facilidade em...; 3. Possuo conhecimento em...)",
-                           key="habilidades")
+habilidades = st.text_input("Quais habilidades você acha que serão úteis para desenvolver esse projeto?",
+                            key="habilidades")
 
-recursos = st.text_area("Quais recursos você tem disponível para realizar o projeto? (Ex.: 1.Tenho acesso a [instituição, laboratório, biblioteca] que me permite...; 2. Conheço pessoas que podem me auxiliar com...; 3. Tenho à disposição equipamentos como [lista de equipamentos] que podem facilitar...)", key="recursos")
+recursos = st.text_input("Quais recursos você pretende utilizar no projeto? (ex: materiais, software, equipamento)",
+                         key="recursos")
 
-impacto = st.text_area("Qual impacto você espera alcançar com o projeto? (Ex.: 1. Minha pesquisa tem o potencial de...; 2. Meu objetivo é transformar a vida de... ; 3. Acredito que minha pesquisa terá um impacto significativo em...)", key="impacto")
+impacto = st.text_input("O que você espera alcançar ao final do projeto?",
+                        key="impacto")
 
-informacao_adicional = st.text_area("Deseja adicionar alguma informação adicional?", key="informacao_adicional")
+informacao_adicional = st.text_area("Deseja adicionar mais alguma informação?",
+                                    key="informacao_adicional")
 
-# Dados do usuário para o prompt
+# Coletando dados do usuário em um dicionário
 dados_usuario = {
-    'ano_serie': ano_serie,
-    'preferencia_projeto': preferencia_projeto,
-    'metodologia': metodologia,
-    'area_conhecimento': area_conhecimento,
-    'especialidade': especialidade,
-    'tema_especifico': tema_especifico,
-    'motivacao': motivacao,
-    'conhecimento_previo': conhecimento_previo,
-    'habilidades': habilidades,
-    'recursos': recursos,
-    'impacto': impacto,
-    'informacao_adicional': informacao_adicional
+    "ano_serie": ano_serie,
+    "preferencia_projeto": preferencia_projeto,
+    "metodologia": metodologia,
+    "area_conhecimento": area_conhecimento,
+    "especialidade": especialidade,
+    "tema_especifico": tema_especifico,
+    "motivacao": motivacao,
+    "conhecimento_previo": conhecimento_previo,
+    "habilidades": habilidades,
+    "recursos": recursos,
+    "impacto": impacto,
+    "informacao_adicional": informacao_adicional
 }
 
-# Gerar ideias de projetos
-if st.button("Gerar Ideias de Projetos"):
-    if not ano_serie or not preferencia_projeto or not metodologia or not area_conhecimento or not tema_especifico:
-        st.error("Por favor, preencha todos os campos.")
+# Verifica se todos os campos obrigatórios estão preenchidos
+if st.button("Gerar ideias de projetos"):
+    if all(value for key, value in dados_usuario.items() if key not in ["especialidade", "informacao_adicional"]):
+        ideias_projetos = gerar_ideias(dados_usuario)
+        if ideias_projetos:
+            st.success("Ideias geradas com sucesso!")
+            st.write(ideias_projetos)
+        else:
+            st.error("Não foi possível gerar ideias de projetos. Tente novamente.")
     else:
-        st.write("Aqui estão algumas ideias de projetos para você:")
-        response = gerar_ideias(dados_usuario)
-        if response:
-            st.write(response)
+        st.error("Por favor, preencha todos os campos obrigatórios.")
