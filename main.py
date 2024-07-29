@@ -157,8 +157,7 @@ elif area_conhecimento == "Lingüística, Letras e Artes":
     especialidade = st.selectbox("Dentro da área de conhecimento escolhido, qual especialidade te interessa mais:", [
         "", "Artes", "Letras", "Lingüística", "Música"])
 
-tema_especifico = st.text_input("Informe o tema específico que você deseja explorar no seu projeto: \n
-(Ex.: 1. Impacto das redes sociais na saúde mental dos adolescentes; 2. Efeitos do aquecimento global na biodiversidade; 3. Desenvolvimento de materiais biodegradáveis; 4. O uso de tecnologias digitais no ensino; 5. Desenvolvimento de novas drogas a partir de plantas medicinais"),
+tema_especifico = st.text_input("Informe o tema específico que você deseja explorar no seu projeto: \n(Ex.: 1. Impacto das redes sociais na saúde mental dos adolescentes; 2. Efeitos do aquecimento global na biodiversidade; 3. Desenvolvimento de materiais biodegradáveis; 4. O uso de tecnologias digitais no ensino; 5. Desenvolvimento de novas drogas a partir de plantas medicinais"),
                                 key="tema_especifico")
 
 motivacao = st.text_input("O que te motivou a escolher esse tema? (Ex.: 1. Sempre fui fascinado(a) por...; 2. Quero contribuir para encontrar soluções para...; 3. Sempre tive curiosidade sobre...)", key="motivacao")
