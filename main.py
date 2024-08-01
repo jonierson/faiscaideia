@@ -109,8 +109,7 @@ Para que o Faísca possa te oferecer as melhores sugestões, é fundamental que 
 
 # Coletando informações do usuário
 ano_serie = st.selectbox("Qual ano/série você está cursando?", [
-    "", "6º Ano do Ensino Fundamental", "7º Ano do Ensino Fundamental",
-    "8º Ano do Ensino Fundamental", "9º Ano do Ensino Fundamental", "1º Ano do Ensino Médio",
+    "", "8º Ano do Ensino Fundamental", "9º Ano do Ensino Fundamental", "1º Ano do Ensino Médio",
     "2º Ano do Ensino Médio", "3º Ano do Ensino Médio"], key="ano_serie")
 
 preferencia_projeto = st.radio("Prefere realizar o projeto sozinho ou em equipe?", ["Sozinho", "Em equipe"],
